@@ -12,6 +12,14 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   google_fonts: ^3.0.1
+  flutter_native_splash: ^2.2.1
+
+flutter_native_splash:
+  image: assets/images/splashl.png
+  color: "#ffffff"
+  image_dark: assets/images/splashd.png
+  color_dark: "#000000"
+
 
 dev_dependencies:
   flutter_test:
