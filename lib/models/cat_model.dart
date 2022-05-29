@@ -38,7 +38,7 @@ class CatModel{
     String wikipedia_url;
     int hypoallergenic;
     String reference_image_id;
-    List<dynamic> image; // id, width, height, url
+    //List<dynamic> image; // id, width, height, url
 
     CatModel({
         required this.id,
@@ -77,7 +77,7 @@ class CatModel{
         required this.wikipedia_url,
         required this.hypoallergenic,
         required this.reference_image_id,
-        required this.image,
+        //required this.image,
     });
 
 
@@ -119,7 +119,7 @@ class CatModel{
         wikipedia_url: json['wikipedia_url'] as String,
         hypoallergenic: json['hypoallergenic'] as int,
         reference_image_id: json['reference_image_id'] as String,
-        image: json['image'] as List<String>,
+        //image: json['image'] as List<String>,
 
       );
     }

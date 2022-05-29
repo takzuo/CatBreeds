@@ -17,9 +17,10 @@ class CatService{
     if(response.statusCode == 200){
       final responseJSON = json.decode(response.body);
       final CatById = CatListResponse.fromJsonList(responseJSON);
+      print(response.body);
       return CatById;
     }
-
+    print(response.body);
     return<CatModel>[];
 
   }

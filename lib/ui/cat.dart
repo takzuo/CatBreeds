@@ -17,7 +17,7 @@ class Cat extends StatelessWidget{
       body: ListView(
         padding: EdgeInsets.all(15),
         children: <Widget>[
-          Image.network(this.cat.image[3]),
+          //Image.network(this.cat.image[3]),
           Text(this.cat.description)
         ],
       ),

@@ -11,7 +11,7 @@ class CardCat extends StatelessWidget{
     return ListTile(
       title: Text(this.cat.name),
       subtitle: Text(this.cat.origin),
-      trailing: Image.network(this.cat.image[3]),
+      //trailing: Image.network(this.cat.image[3]),
       onTap: (){
         Navigator.push(context, MaterialPageRoute(builder:
         (context) => Cat (cat: this.cat)));
