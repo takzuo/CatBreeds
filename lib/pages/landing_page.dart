@@ -1,4 +1,10 @@
+import 'dart:convert' as convert;
+import 'dart:io';
+import 'package:catbreeds/ui/card_cat.dart';
+import 'package:catbreeds/ui/spinnerwidget.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:catbreeds/models/cat_service.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -9,8 +15,6 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
   final myController = TextEditingController();
-
-  Map<String, dynamic> lalist = [{"cosa": "perro", "otracosa": "gato" }] as Map<String, dynamic>;
 
   @override
   void initState() {
@@ -32,7 +36,7 @@ class _LandingPageState extends State<LandingPage> {
       body: Column(
         children: [
           searchBox(),
-          listCards()
+          listCards(context),
         ],
       ),);
   }
@@ -57,14 +61,24 @@ class _LandingPageState extends State<LandingPage> {
   /*/
   TODO: Change for listView from API rest
    */
-  Widget listCards(){
-    return Column(children: [
-      Card(child: Text("Informacion del gato1")),
-      Card(child: Text("Informacion del gato1")),
-      Card(child: Text("Informacion del gato1")),
-      Card(child: Text("Informacion del gato1")),
-      Card(child: Text("Informacion del gato1")),
-    ],);
+  Widget listCards(BuildContext context){
+    return FutureBuilder(
+        future: CatService().getCatById(),
+        builder: (BuildContext context, AsyncSnapshot<List> snapshot){
+          if(snapshot.hasData){
+            return ListView.builder(
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index){
+                 var cat = snapshot.data![index];
+                 return CardCat(cat: cat);
+                }
+            );
+          }else{
+            return SpinnerWidget();
+          }
+        },
+
+    );
   }
 
   @override

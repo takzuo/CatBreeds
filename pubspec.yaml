@@ -13,6 +13,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^3.0.1
   flutter_native_splash: ^2.2.1
+  http: ^0.13.4
 
 flutter_native_splash:
   image: assets/images/splashl.png
