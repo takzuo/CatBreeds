@@ -1,3 +1,4 @@
+import 'package:catbreeds/data/models/cat_model.dart';
 import 'package:flutter/material.dart';
 
 const primaryColor = Color(0xFFABC0DF);
@@ -6,5 +7,8 @@ const thirdColor = Color(0xFF6D94C4);
 const fourthColor = Color(0xFF596353);
 const textoColor = Color(0xFF9acef8);
 const bgColor = Color(0xFF284D79);
-
 const defaultPadding = 16.0;
+
+List<CatModel>? collectionBreeds = [];
+List<dynamic>? collectionBreedsDynamic = [];
+CatModel? collectionB;
