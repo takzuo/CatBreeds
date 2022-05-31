@@ -1,4 +1,4 @@
-enum Response{
+enum Response {
   ok,
   accessDenied,
   networkError,
