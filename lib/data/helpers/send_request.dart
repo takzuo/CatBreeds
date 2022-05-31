@@ -3,11 +3,10 @@ import 'dart:convert';
 import 'package:catbreeds/data/helpers/http_method.dart';
 import 'package:http/http.dart';
 
-
-dynamic _parseBody(dynamic body){
-  try{
+dynamic _parseBody(dynamic body) {
+  try {
     return jsonEncode(body);
-  }catch(_){
+  } catch (_) {
     return body;
   }
 }
@@ -20,28 +19,51 @@ Future<Response> sendRequest({
   required Duration timeOut,
 }) {
   var finalHeaders = {...headers};
-  if(method != HttpMethod.get){
+  if (method != HttpMethod.get) {
     final contentType = headers['Content-Type'];
 
-    if (contentType == null || contentType.contains("application/json")){
+    if (contentType == null || contentType.contains("application/json")) {
       finalHeaders['Content-Type'] = "application/json; charset=UTF-8";
-     body = _parseBody(body);
+      body = _parseBody(body);
     }
-
   }
 
   final client = Client();
 
-  switch(method) {
+  switch (method) {
     case HttpMethod.get:
       return client.get(url).timeout(timeOut);
     case HttpMethod.post:
-      return client.post(url, headers: finalHeaders, body: body,).timeout(timeOut);
+      return client
+          .post(
+            url,
+            headers: finalHeaders,
+            body: body,
+          )
+          .timeout(timeOut);
     case HttpMethod.put:
-      return client.put(url, headers: finalHeaders, body: body,).timeout(timeOut);
+      return client
+          .put(
+            url,
+            headers: finalHeaders,
+            body: body,
+          )
+          .timeout(timeOut);
     case HttpMethod.patch:
-      return client.patch(url, headers: finalHeaders, body: body,).timeout(timeOut);
+      return client
+          .patch(
+            url,
+            headers: finalHeaders,
+            body: body,
+          )
+          .timeout(timeOut);
     case HttpMethod.delete:
-      return client.delete(url, headers: finalHeaders, body: body,).timeout(timeOut);
+      return client
+          .delete(
+            url,
+            headers: finalHeaders,
+            body: body,
+          )
+          .timeout(timeOut);
   }
-  }
+}
