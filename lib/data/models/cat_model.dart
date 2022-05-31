@@ -4,13 +4,15 @@
 
 import 'dart:convert';
 
-List<CatModel> catModelFromJson(String str) => List<CatModel>.from(json.decode(str).map((x) => CatModel.fromJson(x)));
+List<CatModel> catModelFromJson(String str) =>
+    List<CatModel>.from(json.decode(str).map((x) => CatModel.fromJson(x)));
 
-String catModelToJson(List<CatModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String catModelToJson(List<CatModel> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class CatModel {
   CatModel({
-    //required this.weight,
+    required this.weight,
     required this.id,
     required this.name,
     required this.cfaUrl,
@@ -52,7 +54,7 @@ class CatModel {
     required this.bidability,
   });
 
-  //Weight weight;
+  Weight weight;
   String id;
   String name;
   String cfaUrl;
@@ -94,90 +96,103 @@ class CatModel {
   int bidability;
 
   factory CatModel.fromJson(Map<String, dynamic> json) => CatModel(
-    //weight: Weight.fromJson(json["weight"]),
-    id: json["id"]?? "",
-    name: json["name"]?? "",
-    cfaUrl: (json["cfa_url"] == null ? null : json["cfa_url"])?? "",
-    vetstreetUrl: (json["vetstreet_url"] == null ? null : json["vetstreet_url"])?? "",
-    vcahospitalsUrl: (json["vcahospitals_url"] == null ? null : json["vcahospitals_url"])?? "",
-    temperament: json["temperament"]?? "",
-    origin: json["origin"]?? "",
-    countryCodes: json["country_codes"]?? "",
-    countryCode: json["country_code"]?? "",
-    description: json["description"]?? "",
-    lifeSpan: json["life_span"]?? "",
-    indoor: json["indoor"]?? 0,
-    lap: (json["lap"] == null ? null : json["lap"])?? 0,
-    altNames: (json["alt_names"] == null ? null : json["alt_names"])?? "",
-    adaptability: json["adaptability"]?? 0,
-    affectionLevel: json["affection_level"]?? 0,
-    childFriendly: json["child_friendly"]?? 0,
-    dogFriendly: json["dog_friendly"]?? 0,
-    energyLevel: json["energy_level"]?? 0,
-    grooming: json["grooming"]?? 0,
-    healthIssues: json["health_issues"]?? 0,
-    intelligence: json["intelligence"]?? 0,
-    sheddingLevel: json["shedding_level"]?? 0,
-    socialNeeds: json["social_needs"]?? 0,
-    strangerFriendly: json["stranger_friendly"]?? 0,
-    vocalisation: json["vocalisation"]?? 0,
-    experimental: json["experimental"]?? 0,
-    hairless: json["hairless"]?? 0,
-    natural: json["natural"]?? 0,
-    rare: json["rare"]?? 0,
-    rex: json["rex"]?? 0,
-    suppressedTail: json["suppressed_tail"]?? 0,
-    shortLegs: json["short_legs"]?? 0,
-    wikipediaUrl: (json["wikipedia_url"] == null ? null : json["wikipedia_url"])?? "",
-    hypoallergenic: json["hypoallergenic"]?? 0,
-    referenceImageId: (json["reference_image_id"] == null ? null : json["reference_image_id"])?? "",
-    image: json["image"] == null ? null : Image.fromJson(json["image"]),
-    catFriendly: (json["cat_friendly"] == null ? null : json["cat_friendly"])?? 0,
-    bidability: (json["bidability"] == null ? null : json["bidability"])?? 0,
-  );
+        weight: Weight.fromJson(json["weight"]),
+        id: json["id"] ?? "",
+        name: json["name"] ?? "",
+        cfaUrl: (json["cfa_url"] == null ? null : json["cfa_url"]) ?? "",
+        vetstreetUrl:
+            (json["vetstreet_url"] == null ? null : json["vetstreet_url"]) ??
+                "",
+        vcahospitalsUrl: (json["vcahospitals_url"] == null
+                ? null
+                : json["vcahospitals_url"]) ??
+            "",
+        temperament: json["temperament"] ?? "",
+        origin: json["origin"] ?? "",
+        countryCodes: json["country_codes"] ?? "",
+        countryCode: json["country_code"] ?? "",
+        description: json["description"] ?? "",
+        lifeSpan: json["life_span"] ?? "",
+        indoor: json["indoor"] ?? 0,
+        lap: (json["lap"] == null ? null : json["lap"]) ?? 0,
+        altNames: (json["alt_names"] == null ? null : json["alt_names"]) ?? "",
+        adaptability: json["adaptability"] ?? 0,
+        affectionLevel: json["affection_level"] ?? 0,
+        childFriendly: json["child_friendly"] ?? 0,
+        dogFriendly: json["dog_friendly"] ?? 0,
+        energyLevel: json["energy_level"] ?? 0,
+        grooming: json["grooming"] ?? 0,
+        healthIssues: json["health_issues"] ?? 0,
+        intelligence: json["intelligence"] ?? 0,
+        sheddingLevel: json["shedding_level"] ?? 0,
+        socialNeeds: json["social_needs"] ?? 0,
+        strangerFriendly: json["stranger_friendly"] ?? 0,
+        vocalisation: json["vocalisation"] ?? 0,
+        experimental: json["experimental"] ?? 0,
+        hairless: json["hairless"] ?? 0,
+        natural: json["natural"] ?? 0,
+        rare: json["rare"] ?? 0,
+        rex: json["rex"] ?? 0,
+        suppressedTail: json["suppressed_tail"] ?? 0,
+        shortLegs: json["short_legs"] ?? 0,
+        wikipediaUrl:
+            (json["wikipedia_url"] == null ? null : json["wikipedia_url"]) ??
+                "",
+        hypoallergenic: json["hypoallergenic"] ?? 0,
+        referenceImageId: (json["reference_image_id"] == null
+                ? null
+                : json["reference_image_id"]) ??
+            "",
+        image: json["image"] == null ? null : Image.fromJson(json["image"]),
+        catFriendly:
+            (json["cat_friendly"] == null ? null : json["cat_friendly"]) ?? 0,
+        bidability:
+            (json["bidability"] == null ? null : json["bidability"]) ?? 0,
+      );
 
   Map<String, dynamic> toJson() => {
-    //"weight": weight.toJson(),
-    "id": id,
-    "name": name,
-    "cfa_url": cfaUrl == null ? null : cfaUrl,
-    "vetstreet_url": vetstreetUrl == null ? null : vetstreetUrl,
-    "vcahospitals_url": vcahospitalsUrl == null ? null : vcahospitalsUrl,
-    "temperament": temperament,
-    "origin": origin,
-    "country_codes": countryCodes,
-    "country_code": countryCode,
-    "description": description,
-    "life_span": lifeSpan,
-    "indoor": indoor,
-    "lap": lap == null ? null : lap,
-    "alt_names": altNames == null ? null : altNames,
-    "adaptability": adaptability,
-    "affection_level": affectionLevel,
-    "child_friendly": childFriendly,
-    "dog_friendly": dogFriendly,
-    "energy_level": energyLevel,
-    "grooming": grooming,
-    "health_issues": healthIssues,
-    "intelligence": intelligence,
-    "shedding_level": sheddingLevel,
-    "social_needs": socialNeeds,
-    "stranger_friendly": strangerFriendly,
-    "vocalisation": vocalisation,
-    "experimental": experimental,
-    "hairless": hairless,
-    "natural": natural,
-    "rare": rare,
-    "rex": rex,
-    "suppressed_tail": suppressedTail,
-    "short_legs": shortLegs,
-    "wikipedia_url": wikipediaUrl == null ? null : wikipediaUrl,
-    "hypoallergenic": hypoallergenic,
-    "reference_image_id": referenceImageId == null ? null : referenceImageId,
-    "image": image == null ? null : image?.toJson(),
-    "cat_friendly": catFriendly == null ? null : catFriendly,
-    "bidability": bidability == null ? null : bidability,
-  };
+        "weight": weight.toJson(),
+        "id": id,
+        "name": name,
+        "cfa_url": cfaUrl == null ? null : cfaUrl,
+        "vetstreet_url": vetstreetUrl == null ? null : vetstreetUrl,
+        "vcahospitals_url": vcahospitalsUrl == null ? null : vcahospitalsUrl,
+        "temperament": temperament,
+        "origin": origin,
+        "country_codes": countryCodes,
+        "country_code": countryCode,
+        "description": description,
+        "life_span": lifeSpan,
+        "indoor": indoor,
+        "lap": lap == null ? null : lap,
+        "alt_names": altNames == null ? null : altNames,
+        "adaptability": adaptability,
+        "affection_level": affectionLevel,
+        "child_friendly": childFriendly,
+        "dog_friendly": dogFriendly,
+        "energy_level": energyLevel,
+        "grooming": grooming,
+        "health_issues": healthIssues,
+        "intelligence": intelligence,
+        "shedding_level": sheddingLevel,
+        "social_needs": socialNeeds,
+        "stranger_friendly": strangerFriendly,
+        "vocalisation": vocalisation,
+        "experimental": experimental,
+        "hairless": hairless,
+        "natural": natural,
+        "rare": rare,
+        "rex": rex,
+        "suppressed_tail": suppressedTail,
+        "short_legs": shortLegs,
+        "wikipedia_url": wikipediaUrl == null ? null : wikipediaUrl,
+        "hypoallergenic": hypoallergenic,
+        "reference_image_id":
+            referenceImageId == null ? null : referenceImageId,
+        "image": image == null ? null : image?.toJson(),
+        "cat_friendly": catFriendly == null ? null : catFriendly,
+        "bidability": bidability == null ? null : bidability,
+      };
 }
 
 class Image {
@@ -194,18 +209,18 @@ class Image {
   String url;
 
   factory Image.fromJson(Map<String, dynamic> json) => Image(
-    id: (json["id"] == null ? null : json["id"])?? "",
-    width: (json["width"] == null ? null : json["width"])?? 0,
-    height: (json["height"] == null ? null : json["height"])?? 0,
-    url: (json["url"] == null ? null : json["url"])?? "",
-  );
+        id: (json["id"] == null ? null : json["id"]) ?? "",
+        width: (json["width"] == null ? null : json["width"]) ?? 0,
+        height: (json["height"] == null ? null : json["height"]) ?? 0,
+        url: (json["url"] == null ? null : json["url"]) ?? "",
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id == null ? null : id,
-    "width": width == null ? null : width,
-    "height": height == null ? null : height,
-    "url": url == null ? null : url,
-  };
+        "id": id == null ? null : id,
+        "width": width == null ? null : width,
+        "height": height == null ? null : height,
+        "url": url == null ? null : url,
+      };
 }
 
 class Weight {
@@ -218,12 +233,12 @@ class Weight {
   String metric;
 
   factory Weight.fromJson(Map<String, dynamic> json) => Weight(
-    imperial: json["imperial"] ?? "",
-    metric: json["metric"] ?? "",
-  );
+        imperial: json["imperial"] ?? "",
+        metric: json["metric"] ?? "",
+      );
 
   Map<String, dynamic> toJson() => {
-    "imperial": imperial,
-    "metric": metric,
-  };
+        "imperial": imperial,
+        "metric": metric,
+      };
 }
