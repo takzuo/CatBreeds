@@ -7,8 +7,8 @@ const thirdColor = Color(0xFF6D94C4);
 const fourthColor = Color(0xFF596353);
 const textoColor = Color(0xFF9acef8);
 const bgColor = Color(0xFF284D79);
-
 const defaultPadding = 16.0;
 
-List<dynamic> collectionBreeds = [{}] ;
+List<CatModel>? collectionBreeds = [];
+List<dynamic>? collectionBreedsDynamic = [];
 CatModel? collectionB;
